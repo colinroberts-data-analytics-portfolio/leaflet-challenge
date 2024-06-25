@@ -7,11 +7,11 @@ function markerSize(magnitude) {
 
 
 function markerColor(depth) {
-  return depth > 90 ? '#ff5f65' :
+  return depth > 90 ? '#ff5f63' :
          depth > 70 ? '#fca35d' :
          depth > 50 ? '#fdb72a' :
          depth > 30 ? '#f7db11' :
-         depth > 10 ? '#dcf400' :
+         depth > 10 ? '#ecff42' :
                       '#a3f600';
 }
 
