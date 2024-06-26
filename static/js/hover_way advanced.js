@@ -1,11 +1,11 @@
 const API_KEY = 'pk.eyJ1IjoiY29saW5yb2JlcnRzLWNvbnRhY3QiLCJhIjoiY2x4OXZ6b2MzMnZ0ZzJscG9vbzBqc2c1MyJ9.YCYZ4FXf9BWu9pOwfJEm1w';
 
-// Function to determine marker size based on magnitude using square root
+// Function for marker size 
 function markerSize(magnitude) {
   return Math.sqrt(magnitude) * 5; 
 }
 
-// Function to determine marker color based on depth
+// Function for marker color 
 function markerColor(depth) {
   return depth > 90 ? '#ff5f65' :
          depth > 70 ? '#fca35d' :
@@ -48,9 +48,9 @@ d3.json(geoData).then(function(data) {
   // Debug: Check if data is loaded correctly
   console.log(data);
 
-  // GeoJSON layer containing the features array on the earthquakeData object
+  // GeoJSON layer 
   L.geoJSON(data, {
-    // Create circle markers
+    // Circle markers
     pointToLayer: function(feature, latlng) {
       return L.circleMarker(latlng);
     },
@@ -65,7 +65,7 @@ d3.json(geoData).then(function(data) {
         fillOpacity: 0.8
       };
     },
-    // Create popups for each marker
+    // Popups for each marker
     onEachFeature: function(feature, layer) {
       layer.bindPopup(`<h3>${feature.properties.place}</h3><hr><p>Magnitude: ${feature.properties.mag}</p><p>Depth: ${feature.geometry.coordinates[2]}</p><p>${new Date(feature.properties.time)}</p>`);
     }
@@ -98,7 +98,7 @@ legend.onAdd = function() {
       depths = [-10, 10, 30, 50, 70, 90],
       labels = [];
 
-  // Loop through depth intervals and generate a label with a colored square for each interval
+  // Loop through depth intervals and make labels
   for (var i = 0; i < depths.length; i++) {
     div.innerHTML +=
       '<i style="background:' + markerColor(depths[i] + 1) + '"></i> ' +
